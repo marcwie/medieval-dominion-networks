@@ -3,6 +3,9 @@ data:
   raw: data/01_raw
   interim: data/02_interim
   processed: data/03_processed
+  filenames:
+    nodes: city_nodes_annual_all.csv
+    edges: city_edges_annual_all.csv
 
 compute:
   folder: computations
