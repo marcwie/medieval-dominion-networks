@@ -9,3 +9,10 @@ data:
 
 compute:
   folder: computations
+
+grid:
+  projection: LambertAzimuthalEqualArea
+  central_longitude: 10
+  central_latitidue: 52
+  false_easting: 4321000
+  false_northing: 3210000
