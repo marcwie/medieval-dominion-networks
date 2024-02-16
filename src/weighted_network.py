@@ -5,22 +5,35 @@ import numpy as np
 
 class WeightedNetwork():
 
-    def __init__(self, nodes_file, edges_file, year0=None, year1=None):
+    def __init__(self, nodes_file, edges_file, year0=None, year1=None, edge_filter=None):
+
+        if year0 is None and year1 is None:
+            print('No time frame specified. Using full data.')
+
+        if edge_filter is None:
+            print('No edge filter specified. Using full data.')
 
         self._year0 = year0
         self._year1 = year1
+        self._edge_filter = edge_filter
 
         self._nodes = pd.read_csv(nodes_file)
         self._edges = pd.read_csv(edges_file)
         self._edges['ruling_party_category'] = self._edges.PartyID.str[0]
 
         self._select_timeframe()
+        self._filter_edges()
 
         self._position = self._nodes[['PlaceID', 'XCOORD', 'YCOORD']].drop_duplicates().set_index('PlaceID').to_dict('index')
         self._position = {key: (value['XCOORD'], value['YCOORD']) for key, value in self._position.items()}
 
         self.construct_network()
         self.compute_communities()
+
+
+    def _filter_edges(self):
+
+        self._edges = self._edges[self._edges.PartyID != self._edge_filter]
 
 
     def _select_timeframe(self):
