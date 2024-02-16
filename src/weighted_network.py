@@ -16,6 +16,7 @@ class WeightedNetwork():
         self._year0 = year0
         self._year1 = year1
         self._edge_filter = edge_filter
+        self._comms = None
 
         self._nodes = pd.read_csv(nodes_file)
         self._edges = pd.read_csv(edges_file)
@@ -28,7 +29,6 @@ class WeightedNetwork():
         self._position = {key: (value['XCOORD'], value['YCOORD']) for key, value in self._position.items()}
 
         self.construct_network()
-        self.compute_communities()
 
 
     def _filter_edges(self):
@@ -86,5 +86,8 @@ class WeightedNetwork():
         return self._G
 
     def communities(self):
+
+        if not self._comms:
+            self.compute_communities()
 
         return self._comms
