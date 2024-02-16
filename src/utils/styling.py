@@ -1,13 +1,16 @@
+from matplotlib import pyplot as plt
+
+
 def hide_and_move_axis(axis, hide=['right', 'top'], move=3):
     """
     Hide spines of an axis and move the remaining visible one's outward.
     """
     for position in ['left', 'right', 'bottom', 'top']:
-        
+
         if position in hide:
             axis.spines[position].set_visible(False)
         else:
-            axis.spines[position].set_position(('outward', move))  
+            axis.spines[position].set_position(('outward', move))
 
     if 'left' in hide and 'right' not in hide:
         axis.yaxis.tick_right()
@@ -23,3 +26,13 @@ def hide_and_move_axis(axis, hide=['right', 'top'], move=3):
 
     if 'left' in hide and 'right' in hide:
         axis.set_yticks([])
+
+
+def get_standard_colors():
+    """
+    Get a list with the current standard colors.
+
+    Returns:
+        list (str): The hex codes of the currently active standard colors.
+    """
+    return plt.rcParams['axes.prop_cycle'].by_key()['color']
