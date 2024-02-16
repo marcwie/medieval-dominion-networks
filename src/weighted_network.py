@@ -1,39 +1,40 @@
 import pandas as pd
 import networkx as nx
 import numpy as np
+from .network import Network
 
-
-class WeightedNetwork():
+class WeightedNetwork(Network):
 
     def __init__(self, nodes_file, edges_file, year0=None, year1=None, edge_filter=None):
+
+        super().__init__(nodes_file=nodes_file, edges_file=edges_file, edge_filter=edge_filter)
 
         if year0 is None and year1 is None:
             print('No time frame specified. Using full data.')
 
-        if edge_filter is None:
-            print('No edge filter specified. Using full data.')
+        #if edge_filter is None:
+        #    print('No edge filter specified. Using full data.')
 
         self._year0 = year0
         self._year1 = year1
-        self._edge_filter = edge_filter
+        #self._edge_filter = edge_filter
         self._comms = None
 
-        self._nodes = pd.read_csv(nodes_file)
-        self._edges = pd.read_csv(edges_file)
-        self._edges['ruling_party_category'] = self._edges.PartyID.str[0]
+        #self._nodes = pd.read_csv(nodes_file)
+        #self._edges = pd.read_csv(edges_file)
+        #self._edges['ruling_party_category'] = self._edges.PartyID.str[0]
 
         self._select_timeframe()
-        self._filter_edges()
+        #self._filter_edges()
 
-        self._position = self._nodes[['PlaceID', 'XCOORD', 'YCOORD']].drop_duplicates().set_index('PlaceID').to_dict('index')
-        self._position = {key: (value['XCOORD'], value['YCOORD']) for key, value in self._position.items()}
+        #self._position = self._nodes[['PlaceID', 'XCOORD', 'YCOORD']].drop_duplicates().set_index('PlaceID').to_dict('index')
+        #self._position = {key: (value['XCOORD'], value['YCOORD']) for key, value in self._position.items()}
 
         self.construct_network()
 
 
-    def _filter_edges(self):
-
-        self._edges = self._edges[self._edges.PartyID != self._edge_filter]
+    #def _filter_edges(self):
+    #    self._edges = self._edges[self._edges.PartyID != self._edge_filter]
 
 
     def _select_timeframe(self):
@@ -69,17 +70,14 @@ class WeightedNetwork():
         self._comms = comms
 
 
-    def nodes(self):
+    #def nodes(self):
+    #    return self._nodes
 
-        return self._nodes
+    #def edges(self):
+    #    return self._edges
 
-    def edges(self):
-
-        return self._edges
-
-    def position(self):
-
-        return self._position
+    #def position(self):
+    #    return self._position
 
     def G(self):
 
