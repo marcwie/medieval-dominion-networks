@@ -7,6 +7,7 @@ class WeightedNetwork(Network):
 
     def __init__(self, nodes_file, edges_file, year0=None, year1=None, edge_filter=None):
 
+        print('Initializing weighted network...')
         super().__init__(nodes_file=nodes_file, edges_file=edges_file, edge_filter=edge_filter)
 
         if year0 is None and year1 is None:
@@ -69,6 +70,10 @@ class WeightedNetwork(Network):
 
         self._comms = comms
 
+
+    def set_communities(self, communities):
+
+        self._comms = communities
 
     #def nodes(self):
     #    return self._nodes

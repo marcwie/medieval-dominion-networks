@@ -6,6 +6,8 @@ import networkx as nx
 class TemporalNetwork(Network):
 
     def __init__(self, nodes_file, edges_file, edge_filter=None):
+
+        print('Initalizing temporal network...')
         super().__init__(edges_file=edges_file, nodes_file=nodes_file, edge_filter=edge_filter)
 
         self._years = np.sort(self._edges.Year.unique())
