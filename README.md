@@ -2,7 +2,7 @@
 
 Contains source code for the analysis of medieval co-dominion networks. This is a side-project with [Kerice Doten-Snitker](https://kericedotensnitker.com/) that started during a research visit to the Santa Fe Institute. 
 
-The goal of this project is to investigate the coevolution of political decision-making in medieval Europe. For this purpose, we analyze a network of medieval co-dominion networks to cluster cities into political communities and then explore the coherence of political behavior within communities. Edges in the network represent shared dominion of two cities by a single ruling party, e.g. a certain bishop governing two cities at the same time. The core assumption is that policies spread from city to city along these edges. 
+The objective of this project is to investigate the coevolution of political decision-making in medieval Europe. We analyze a network of co-dominion relationships among medieval cities to cluster them into political communities. In this context, co-dominion networks represent instances where two cities are jointly ruled by a single party, such as a bishop governing both simultaneously. We employ these networks to explore the coherence of political behavior within communities, operating on the assumption that policies spread from city to city along the edges of this network.
 
 More information on the project can be found [here](https://kericedotensnitker.com/research/medieval-expulsions/). 
 
