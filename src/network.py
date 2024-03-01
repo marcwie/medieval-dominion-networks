@@ -12,6 +12,9 @@ class Network():
         self._position = self._nodes[['PlaceID', 'XCOORD', 'YCOORD']].drop_duplicates().set_index('PlaceID').to_dict('index')
         self._position = {key: (value['XCOORD'], value['YCOORD']) for key, value in self._position.items()}
 
+        if edge_filter:
+            print('Ignoring edges coded as', edge_filter)
+
         self._edge_filter = edge_filter
         self._edges = pd.read_csv(edges_file)
         self._edges['ruling_party_category'] = self._edges.PartyID.str[0]
