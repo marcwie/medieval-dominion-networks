@@ -52,5 +52,6 @@ Put both files in `data/01_raw` and set the correct filesnames in `config/main.y
 
 # Usage
 
-For now, all necessary code is found in `notebooks/1.01-analysis-for-asrec-presentation.ipynb`.
-
+The reusable plotting functions and supporting shared-status analysis are in `src/plotting.py`.
+Run `notebooks/1.01-run-analysis.ipynb` to generate the five presentation figures.
+The notebook expects the node and edge CSV files described above in `data/01_raw`.
